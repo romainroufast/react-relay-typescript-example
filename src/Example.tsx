@@ -8,6 +8,7 @@ import { ExampleQuery, ExampleQueryResponse } from "./__generated__/ExampleQuery
 const Spaceships = (props: ExampleQueryResponse) => {
     return (
       <div>
+        <h4>Spaceships rendered by Relay <small>(see schema.graphql)</small></h4>
         {props.spaceships && props.spaceships.length > 0 && props.spaceships.map(s => s !== null && <div key={`spaceship-${s.id}`}>{s.name}</div>)}
       </div>      
     )
