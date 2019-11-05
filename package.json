@@ -21,7 +21,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "relay": "relay-compiler --verbose --config ./relay.config.js"
+    "relay": "relay-compiler --verbose --config ./relay.config.js",
+    "update-schema": "get-graphql-schema http://localhost:5000/graphql > schema.graphql"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -41,6 +42,7 @@
   "devDependencies": {
     "@types/react-relay": "^7.0.0",
     "@types/relay-runtime": "^6.0.9",
+    "get-graphql-schema": "^2.1.2",
     "relay-compiler": "^7.0.0",
     "relay-compiler-language-typescript": "^10.0.0",
     "relay-config": "^7.0.0"
