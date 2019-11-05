@@ -1,5 +1,3 @@
-# WIP: will be ok 11-04-2019  
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 Relay + GraphQL + Typescript
 
@@ -12,6 +10,8 @@ Target your service endpoint in `.env` file.
 In the project directory, you can run:
 
 `yarn`  
+
+`yarn run update-schema`  
 
 `yarn run relay`  
 
