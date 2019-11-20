@@ -2,13 +2,13 @@ import { graphql } from 'babel-plugin-relay/macro';
 import React from 'react';
 import SpaceshipListItem from './Spaceship';
 import { PreparedRoutedQuery } from './routing/types';
-import { HomeRootSpaceshipsQueryResponse } from './__generated__/HomeRootSpaceshipsQuery.graphql';
+import { HomeRootSpaceshipsQueryResponse, HomeRootSpaceshipsQueryVariables } from './__generated__/HomeRootSpaceshipsQuery.graphql';
 import { usePreparedRouteData } from './routing/usePreparedRouteData';
 
 /**
  * The root component for the home route.
  */
-export default function HomeRoot(props: PreparedRoutedQuery<HomeRootSpaceshipsQueryResponse>) {
+export default function HomeRoot(props: PreparedRoutedQuery<HomeRootSpaceshipsQueryResponse, HomeRootSpaceshipsQueryVariables>) {
   // Defines *what* data the component needs via a query. The responsibility of
   // actually fetching this data belongs to the route definition: it calls
   // preloadQuery() with the query and variables, and the result is passed
@@ -32,9 +32,9 @@ export default function HomeRoot(props: PreparedRoutedQuery<HomeRootSpaceshipsQu
 
   return (
     <ul>
-      {spaceships.map((o, i) => (
+      {spaceships.map((spaceship, i) => (
         <li key={`spaceship-list-item-${i}`}>
-          <SpaceshipListItem spaceship={o}/>
+          <SpaceshipListItem {...spaceship}/>
         </li>
       ))}
     </ul>

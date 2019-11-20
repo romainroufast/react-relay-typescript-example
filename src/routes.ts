@@ -61,6 +61,27 @@ const routes: Array<IRoutesDefinition> = [
           };
         },
       },
+      {
+        path: '/spaceship/:id',
+        exact: true,
+        component: JSResource('SpaceshipDetailRoot', () => import('./SpaceshipDetailRoot')), 
+        prepare: (params: any) => {
+          const query = require('./__generated__/SpaceshipDetailRootQuery.graphql').default
+          return {
+            query: preloadQuery(
+              environment,
+              query,
+              {
+                id: params.id
+              },
+              // The fetchPolicy allows us to specify whether to render from cached
+              // data if possible (store-or-network) or only fetch from network
+              // (network-only).
+              { fetchPolicy: 'store-or-network' },
+            ),
+          };
+        }
+      }
     ],
   },
 ];

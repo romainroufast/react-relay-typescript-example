@@ -3,7 +3,7 @@ import { PreloadedQuery, EnvironmentProviderOptions } from "react-relay/lib/rela
 import { OperationType } from "relay-runtime";
 import { History, Location } from 'history';
 import { IJSResource } from '../types';
-import { RouteConfig } from 'react-router-config';
+import { RouteConfig, MatchedRoute } from 'react-router-config';
 
 export interface IRouteMatchedEntry {
     component: React.ReactNode,
@@ -20,6 +20,16 @@ export interface IRouteDefinition {
     prepare(params: any): {
         query: PreloadedQuery<OperationType, EnvironmentProviderOptions>
     },
+}
+
+export interface IRouteData {
+    isExact: boolean
+    path: string,
+    url: string
+}
+
+export interface IRouteData<T> extends IRouteData {
+    params: T
 }
 
 export interface IRoutesDefinition extends RouteConfig {
@@ -39,13 +49,25 @@ export interface IRouteComponent {
     children?: React.ReactNode,
 }
 
-export interface PreparedRoutedQuery<T> {
+// export interface PreparedRoutedQuery<T> {
+//     dataType: T,
+//     children: React.ReactNode,
+//     prepared: {
+//         query: PreloadedQuery<OperationType, EnvironmentProviderOptions>
+//     },
+//     routeData: IRouteData
+// }
+
+export interface PreparedRoutedQuery<T, U> {
     dataType: T,
     children: React.ReactNode,
     prepared: {
         query: PreloadedQuery<OperationType, EnvironmentProviderOptions>
     },
-    routeData: match<{}>
+    routeData: IRouteData<U>
+}
+
+export interface FragmentQuery<T> {
 }
 
 export interface IRouteEntry {

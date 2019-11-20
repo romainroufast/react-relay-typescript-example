@@ -1,18 +1,18 @@
 import React from 'react';
 import { graphql } from 'babel-plugin-relay/macro';
-import { RootQueryResponse } from './__generated__/RootQuery.graphql';
+import { RootQueryResponse, RootQueryVariables } from './__generated__/RootQuery.graphql';
 import { PreparedRoutedQuery } from './routing/types';
 import { usePreparedRouteData } from './routing/usePreparedRouteData'
 
 const { Suspense } = React;
 
 
-export default function Root(props: PreparedRoutedQuery<RootQueryResponse>) {
+export default function Root(props: PreparedRoutedQuery<RootQueryResponse, RootQueryVariables>) {
   // Defines *what* data the component needs via a query. The responsibility of
   // actually fetching this data belongs to the route definition: it calls
   // preloadQuery() with the query and variables, and the result is passed
   // on props.prepared.query - see src/routes.js
-  const data = usePreparedRouteData<RootQueryResponse>(
+  const data = usePreparedRouteData(
     props, 
     graphql`
       query RootQuery {
@@ -28,7 +28,7 @@ export default function Root(props: PreparedRoutedQuery<RootQueryResponse>) {
     `)
   const { spaceships } = data;
 
-  console.log(spaceships)
+  console.log("TEST SIMPLE QUERY FROM ROOT (useless as component don't use the received content)", spaceships)
 
   return (
     <div className="root">
