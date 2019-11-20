@@ -1,14 +1,14 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-export type SpaceshipFragment = {
+export type SpaceshipsListItem_spaceship = {
     readonly id: string | null;
     readonly name: string;
     readonly commander: {
         readonly id: string | null;
         readonly name: string;
     } | null;
-    readonly " $refType": "SpaceshipFragment";
+    readonly " $refType": "SpaceshipsListItem_spaceship";
 };
 
 
@@ -30,7 +30,7 @@ v1 = {
 };
 return {
   "kind": "Fragment",
-  "name": "SpaceshipFragment",
+  "name": "SpaceshipsListItem_spaceship",
   "type": "Spaceship",
   "metadata": null,
   "argumentDefinitions": [],
@@ -53,5 +53,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'f53c15f08f7af4648f1c84bbdbd07899';
+(node as any).hash = 'f90974bf2a07baba1f4090ffdcdfe67b';
 export default node;
