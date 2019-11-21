@@ -5,6 +5,7 @@ import { graphql } from 'babel-plugin-relay/macro'
 import environment from './environment'
 import { ExampleQuery, ExampleQueryResponse } from "./__generated__/ExampleQuery.graphql"
 
+
 const Spaceships = (props: ExampleQueryResponse) => {
     return (
       <div>

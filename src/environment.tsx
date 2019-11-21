@@ -57,7 +57,15 @@ function fetchQuery(
 
 const environment = new Environment({
   network: Network.create(fetchQuery),
-  store: new Store(new RecordSource()),
+  store: new Store(new RecordSource(), {
+    // This property tells Relay to not immediately clear its cache when the user
+    // navigates around the app. Relay will hold onto the specified number of
+    // query results, allowing the user to return to recently visited pages
+    // and reusing cached data if its available/fresh.
+
+    // @ts-ignore
+    gcReleaseBufferSize: 10,
+  }),
 });
 
 export default environment;
